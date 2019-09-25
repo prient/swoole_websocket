@@ -7,9 +7,11 @@ ENV PHPREDIS_VERSION 4.0.0
 ENV HIREDIS_VERSION 0.13.3
 ENV SWOOLE_VERSION 4.2.5
 
+RUN sed -i 's#http://archive.ubuntu.com/#http://mirrors.tuna.tsinghua.edu.cn/#' /etc/apt/sources.list;
+
 # Libs
 RUN apt-get update \
-    && apt-get install --assume-yes\
+    && apt-get install --fix-missing\
         curl \
         wget \
         git \
