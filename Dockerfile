@@ -10,18 +10,26 @@ ENV SWOOLE_VERSION 4.2.5
 RUN sed -i 's#http://archive.ubuntu.com/#http://mirrors.tuna.tsinghua.edu.cn/#' /etc/apt/sources.list;
 
 # Libs
-RUN apt-get update \
-    && apt-get install -y\
-        curl \
-        wget \
-        git \
-        zip \
-        libz-dev \
-        libssl-dev \
-        libnghttp2-dev \
-        libpcre3-dev \
-    && apt-get clean \
-    && apt-get autoremove
+#RUN apt-get update \
+#    && apt-get install -y\
+#        curl \
+#        wget \
+#        git \
+#        zip \
+#        libz-dev \
+#        libssl-dev \
+#        libnghttp2-dev \
+#        libpcre3-dev \
+#    && apt-get clean \
+#    && apt-get autoremove
+RUN apt-get update && apt-get install -y \
+		libfreetype6-dev \
+		libjpeg62-turbo-dev \
+		libmcrypt-dev \
+		libpng-dev \
+	&& docker-php-ext-install -j$(nproc) iconv mcrypt \
+	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+	&& docker-php-ext-install -j$(nproc) gd
 
 RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
