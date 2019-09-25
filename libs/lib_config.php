@@ -148,10 +148,10 @@ function swoole_error_handler($errno, $errstr, $errfile, $errline)
  * @param  string $str
  * @return Swoole\StringObject
  */
-function _string($str)
-{
-    return new Swoole\StringObject($str);
-}
+//function _string($str)
+//{
+//    return new Swoole\StringObject($str);
+//}
 
 /**
  * @param  array $array
