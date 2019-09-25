@@ -9,7 +9,7 @@ ENV SWOOLE_VERSION 4.2.5
 
 # Libs
 RUN apt-get update \
-    && apt-get install -y \
+    && apt-get install --assume-yes\
         curl \
         wget \
         git \
@@ -32,17 +32,17 @@ RUN wget http://pecl.php.net/get/redis-${PHPREDIS_VERSION}.tgz -O /tmp/redis.tar
     && docker-php-ext-enable redis
 
 # Hiredis
-#RUN wget https://github.com/redis/hiredis/archive/v${HIREDIS_VERSION}.tar.gz -O hiredis.tar.gz \
-#    && mkdir -p hiredis \
-#    && tar -xf hiredis.tar.gz -C hiredis --strip-components=1 \
-#    && rm hiredis.tar.gz \
-#    && ( \
-#        cd hiredis \
-#        && make -j$(nproc) \
-#        && make install \
-#        && ldconfig \
-#    ) \
-#    && rm -r hiredis
+RUN wget https://github.com/redis/hiredis/archive/v${HIREDIS_VERSION}.tar.gz -O hiredis.tar.gz \
+    && mkdir -p hiredis \
+    && tar -xf hiredis.tar.gz -C hiredis --strip-components=1 \
+    && rm hiredis.tar.gz \
+    && ( \
+        cd hiredis \
+        && make -j$(nproc) \
+        && make install \
+        && ldconfig \
+    ) \
+    && rm -r hiredis
 
 # Swoole extension
 RUN wget https://github.com/swoole/swoole-src/archive/v${SWOOLE_VERSION}.tar.gz -O swoole.tar.gz \
