@@ -157,7 +157,7 @@ function _string($str)
  * @param  array $array
  * @return Swoole\ArrayObject
  */
-function _array($array)
-{
-    return new Swoole\ArrayObject($array);
-}
+//function _array($array)
+//{
+//    return new Swoole\ArrayObject($array);
+//}
