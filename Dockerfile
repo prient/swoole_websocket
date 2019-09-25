@@ -2,6 +2,7 @@ FROM php:latest
 
 MAINTAINER whr
 
+COPY . /var/www/html/
 # install modules : GD iconv
 RUN apt-get update && apt-get install -y \
         procps \
@@ -71,10 +72,8 @@ RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo 'Asia/Shanghai' > /etc/timezone && \
     echo "[Date]\ndate.timezone=Asia/Shanghai" > /usr/local/etc/php/conf.d/timezone.ini
 
-COPY . /var/www/html/
-
-RUN chmod +x /var/www/html/start.sh
-
+COPY start.sh /start.sh
+RUN chmod -R 777 /start.sh
 EXPOSE 9443
+ENTRYPOINT ["/start.sh"]
 
-ENTRYPOINT ["start.sh"]
