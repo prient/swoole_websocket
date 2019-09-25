@@ -43,10 +43,10 @@ RUN curl -sS https://getcomposer.org/installer | php \
     && composer self-update --clean-backups
 
 # Redis extension
-RUN wget http://download.redis.io/releases/redis-4.0.9.tar.gz -O /tmp/redis.tar.tgz \
-    && pecl install /tmp/redis.tar.tgz \
-    && rm -rf /tmp/redis.tar.tgz \
-    && docker-php-ext-enable redis
+#RUN wget http://download.redis.io/releases/redis-4.0.9.tar.gz -O /tmp/redis.tar.tgz \
+#    && pecl install /tmp/redis.tar.tgz \
+#    && rm -rf /tmp/redis.tar.tgz \
+#    && docker-php-ext-enable redis
 
 # Hiredis
 RUN wget https://github.com/redis/hiredis/archive/v${HIREDIS_VERSION}.tar.gz -O hiredis.tar.gz \
