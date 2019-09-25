@@ -73,8 +73,8 @@ RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
 
 COPY . /var/www/html/
 
-RUN chmod -R 777 /var/www/html/examples/websocket_server.php
+RUN chmod +x /var/www/html/start.sh
 
 EXPOSE 9443
 
-ENTRYPOINT ["php","/var/www/html/examples/websocket_server.php "]
+ENTRYPOINT ["start.sh"]
