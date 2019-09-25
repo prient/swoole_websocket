@@ -31,6 +31,13 @@ RUN apt-get update && apt-get install -y \
 	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
 	&& docker-php-ext-install -j$(nproc) gd
 
+
+#zip
+RUN apt-get install libzip-dev -y
+RUN pecl install zip
+RUN docker-php-ext-enable zip
+RUN apt-get install zip -y
+
 RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
     && composer self-update --clean-backups
