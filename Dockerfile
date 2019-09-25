@@ -11,7 +11,7 @@ RUN sed -i 's#http://archive.ubuntu.com/#http://mirrors.tuna.tsinghua.edu.cn/#' 
 
 # Libs
 RUN apt-get update \
-    && apt-get install --fix-missing\
+    && apt-get install -y\
         curl \
         wget \
         git \
