@@ -1,4 +1,4 @@
-FROM wodby/php-apache:latest
+FROM php:7.2-apache
 
 MAINTAINER whr
 
