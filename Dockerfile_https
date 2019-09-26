@@ -8,11 +8,10 @@ COPY . /var/www/html/
 
 RUN apt-get update && apt-get install -y \
         procps \
-		libfreetype6-dev \
-		libjpeg62-turbo-dev \
-		libmcrypt-dev \
-		libpng-dev \
-		openssl \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng-dev \
+        openssl \
         libssh-dev \
         libpcre3 \
         libpcre3-dev \
@@ -22,9 +21,7 @@ RUN apt-get update && apt-get install -y \
         wget \
         zip \
         unzip \
-        && docker-php-ext-install -j$(nproc) iconv mcrypt \
-        && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-        && docker-php-ext-install -j$(nproc) gd \
+        git && \
         apt autoremove && apt clean
 
 # install php pdo_mysql opcache
