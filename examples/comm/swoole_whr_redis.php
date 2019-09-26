@@ -8,8 +8,9 @@
 require __DIR__ . '/swoole_msg.php';
 class swoole_whr_redis
 {
+
     private $conf = [
-        "host"=>"127.0.0.1",
+        "host" => "127.0.0.1",
     ];
 
     static $clients = "clients";//用户hash表
@@ -17,6 +18,7 @@ class swoole_whr_redis
 
     public function __construct()
     {
+        $this->conf['host'] = strtoupper(substr(PHP_OS,0,6))==='DARWIN'?'127.0.0.1':'172.16.255.198';
         try{
             $this->redis = new Redis();
             $this->redis->connect($this->conf['host']);

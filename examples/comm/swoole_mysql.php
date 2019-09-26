@@ -12,9 +12,9 @@ class swoole_mysqls{
     public function __construct() {
         $this->db = new swoole_mysql;
         $this->param = array(
-            'host' => '127.0.0.1',
+            'host' => strtoupper(substr(PHP_OS,0,6))==='DARWIN'?'127.0.0.1':'cdb-k88xysui.bj.tencentcdb.com',
             'user' => 'root',
-            'password' => '123123',
+            'password' => strtoupper(substr(PHP_OS,0,6))==='DARWIN'?'123123':'HZYsWJQMONmZtYnP123',
             'database' => 'unmshop',
             'charset' => 'utf8', //指定字符集
             'timeout' => 2
