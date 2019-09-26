@@ -1,10 +1,9 @@
-FROM php-apache-dev
+FROM wodby/php-apache:latest
 
 MAINTAINER whr
 
 COPY . /var/www/html/
 # install modules : GD iconv
-
 
 RUN apt-get update && apt-get install -y \
         procps \
