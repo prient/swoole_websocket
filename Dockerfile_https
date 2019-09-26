@@ -72,5 +72,7 @@ RUN cd /root && \
 COPY entry-point.sh /entry-point.sh
 RUN chmod -R 777 /entry-point.sh
 EXPOSE 80
+RUN cp /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/
+RUN cp /etc/apache2/mods-available/ssl.load /etc/apache2/mods-enabled/
 ENTRYPOINT ["/entry-point.sh"]
 
