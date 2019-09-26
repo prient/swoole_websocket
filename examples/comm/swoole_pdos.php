@@ -14,8 +14,9 @@ class swoole_pdos
     private $db;
     public function __construct()
     {
-        $this->dsn = strtoupper(substr(PHP_OS,0,6))==='DARWIN'?"mysql:host=127.0.0.1;dbname=unmshop":"mysql:host=cdb-k88xysui.bj.tencentcdb.com;dbname=unmshop";
+        $this->dsn = strtoupper(substr(PHP_OS,0,6))==='DARWIN'?"mysql:host=127.0.0.1;dbname=unmshop":"mysql:host=cdb-k88xysui.bj.tencentcdb.com;port=10025;dbname=unmshop";
         $this->password = strtoupper(substr(PHP_OS,0,6))==='DARWIN'?'123123':'HZYsWJQMONmZtYnP123';
+        echo $this->dsn;
         try{
             $this->db = new PDO($this->dsn,$this->account,$this->password);
         }catch (PDOException $e){
