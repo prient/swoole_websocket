@@ -132,8 +132,8 @@ class WebSocket extends Swoole\Protocol\WebSocket
 }
 
 //require __DIR__'/phar://swoole.phar';
-Swoole\Config::$debug = true;
-Swoole\Error::$echo_html = false;
+//Swoole\Config::$debug = true;
+//Swoole\Error::$echo_html = false;
 
 $AppSvr = new WebSocket();
 $AppSvr->loadSetting(__DIR__."/swoole.ini"); //加载配置文件
