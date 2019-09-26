@@ -69,6 +69,7 @@ RUN cd /root && \
     echo "swoole.fast_serialize=On" >> /usr/local/etc/php/conf.d/docker-php-ext-swoole-serialize.ini && \
     rm -rf /tmp/*
 
+COPY 000-default.conf /etc/apache2/sites-available/
 COPY entry-point.sh /entry-point.sh
 RUN chmod -R 777 /entry-point.sh
 EXPOSE 80
