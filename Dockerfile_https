@@ -1,4 +1,4 @@
-FROM php:7.1.9-fpm
+FROM php:5.6-apache
 
 MAINTAINER whr
 
@@ -6,26 +6,23 @@ COPY . /var/www/html/
 # install modules : GD iconv
 
 
-
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
-    curl \
-    libicu-dev \
-    libmemcached-dev \
-    libz-dev \
-    libpq-dev \
-    libjpeg-dev \
-    libpng12-dev \
-    libfreetype6-dev \
-    libssl-dev \
-    libmcrypt-dev \
-    libxml2-dev \
-    libbz2-dev \
-    libjpeg62-turbo-dev \
-    php-pear \
-    curl \
-    git \
-    subversion \
+RUN apt-get update && apt-get install -y \
+        procps \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng-dev \
+        openssl \
+        libssh-dev \
+        libpcre3 \
+        libpcre3-dev \
+        libnghttp2-dev \
+        libhiredis-dev \
+        curl \
+        wget \
+        zip \
+        unzip \
+        git && \
+        apt autoremove && apt clean
 
 
 # install php pdo_mysql opcache
