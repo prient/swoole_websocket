@@ -5,10 +5,10 @@ MAINTAINER whr
 COPY . /var/www/html/
 # install modules : GD iconv
 RUN sudo apt-get update && apt-get install -y \
-        procps \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libpng-dev \
+#        procps \
+#        libfreetype6-dev \
+#        libjpeg62-turbo-dev \
+#        libpng-dev \
         openssl \
         libssh-dev \
         libpcre3 \
