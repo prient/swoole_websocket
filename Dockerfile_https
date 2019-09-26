@@ -1,5 +1,5 @@
-FROM php:7.2-apache
-
+#FROM php:7.2-apache
+FROM php:5.6-apache
 MAINTAINER whr
 
 COPY . /var/www/html/
@@ -68,11 +68,6 @@ RUN cd /root && \
     docker-php-ext-enable swoole && \
     echo "swoole.fast_serialize=On" >> /usr/local/etc/php/conf.d/docker-php-ext-swoole-serialize.ini && \
     rm -rf /tmp/*
-
-# set China timezone
-RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    echo 'Asia/Shanghai' > /etc/timezone && \
-    echo "[Date]\ndate.timezone=Asia/Shanghai" > /usr/local/etc/php/conf.d/timezone.ini
 
 COPY entry-point.sh /entry-point.sh
 RUN chmod -R 777 /entry-point.sh
