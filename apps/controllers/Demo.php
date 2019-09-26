@@ -8,11 +8,13 @@
 namespace App\Controller;
 use App\Model\Account;
 use Swoole;
+
 header("Access-Control-Allow-Origin:*");
-
-
+header('Access-Control-Allow-Methods:POST');
+header('Access-Control-Allow-Headers:x-requested-with, content-type');
 class Demo extends Swoole\Controller
 {
+
     function __construct($swoole)
     {
         parent::__construct($swoole);
