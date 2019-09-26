@@ -19,8 +19,8 @@ RUN apt-get update && apt-get install -y \
         wget \
         zip \
         unzip \
-        git && \
-        apt autoremove && apt clean
+#        git && \
+#        apt autoremove && apt clean
 
 # install php pdo_mysql opcache
 # WARNING: Disable opcache-cli if you run you php
