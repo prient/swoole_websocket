@@ -4,7 +4,7 @@ MAINTAINER whr
 
 COPY . /var/www/html/
 # install modules : GD iconv
-RUN sudo apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y \
 #        procps \
 #        libfreetype6-dev \
 #        libjpeg62-turbo-dev \
