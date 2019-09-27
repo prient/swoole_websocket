@@ -55,4 +55,25 @@ class Demo extends Swoole\Controller
         }
     }
 
+    function uinfo_auto(){
+
+        $data['openid'] = $_GET["openid"];
+        $data['nickname'] = $_GET["nickname"];
+        $data['headimgurl'] = $_GET["headimgurl"];
+
+        $user_model = model("Account");
+
+        $res = $user_model->get($data['openid'],"openid")->getOriginalData();
+        if (empty($res)){
+            //add
+            $new_id = $user_model->put($data);
+            if($new_id){
+                return $this->json($data,1,"insert ok");
+            }else{
+                return $this->json("",0,"insert user error");
+            }
+        }else{
+            return $this->json($data,1,"ok");
+        }
+    }
 }
